@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonio et Mairéad - 22 mai 2027</title>
+    <style>
+        :root {
+            --primary-green: #384e35;
+            --light-green-btn: #a3d39c;
+            --light-green-hover: #8ec586;
+            --text-dark: #2c2c2c;
+            --bg-color: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Barra superiore con Tasto Menu e Tasto Lingua */
+        header {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Contenitore Menu a tendina */
+        .menu-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .top-btn {
+            background-color: #f4f7f4;
+            border: 1.5px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-btn:hover {
+            background-color: var(--primary-green);
+            color: #ffffff;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background-color: #ffffff;
+            min-width: 170px;
+            border: 1px solid #d5e0d4;
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 11px 16px;
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.15s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f6ef;
+        }
+
+        /* Contenitore principale */
+        main {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 15px 25px 30px;
+            flex: 1;
+        }
+
+        /* Sezione Titolo con Immagine */
+        .hero {
+            text-align: center;
+            scroll-margin-top: 20px;
+        }
+
+        .title-image-wrapper {
+            margin: 0 auto 14px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .title-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           QUI DECIDI IL FONT DI DATA E ORA (.date-location)
+           ========================================================= */
+        .date-location {
+            font-family: Georgia, 'Times New Roman', Times, serif; /* <--- CAMBIA QUI IL NOME DEL FONT */
+            margin-top: 8px;
+            color: #333;
+        }
+
+        .date-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+        }
+
+        .date-line::before,
+        .date-line::after {
+            content: "";
+            height: 1px;
+            background-color: #777;
+            width: 80px;
+            max-width: 15vw;
+        }
+
+        .time-place {
+            font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+            margin-top: 4px;
+        }
+
+        /* Pulsante Verde Principale (più piccolo + più spazio sotto) */
+        .cta-container {
+            text-align: center;
+            margin: 24px 0 75px; /* 75px crea lo spazio extra prima delle tre colonne */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--light-green-btn);
+            color: #263624;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: clamp(0.88rem, 2vw, 1.18rem);
+            padding: 11px 24px;
+            border-radius: 16px;
+            max-width: 340px;
+            width: 100%;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+            transition: background-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--light-green-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Griglia a 3 colonne per le informazioni */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-bottom: 35px;
+            scroll-margin-top: 25px;
+        }
+
+        .info-col h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .info-col ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .info-col li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .info-col a {
+            color: var(--text-dark);
+            text-decoration: underline;
+        }
+
+        .info-col a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Sezione Photos & Contatti */
+        .bottom-info {
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .bottom-info h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .bottom-info ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .bottom-info p {
+            margin-bottom: 6px;
+        }
+
+        .bottom-info a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .bottom-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Immagine floreale in basso */
+        .footer-flowers {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto 0;
+            text-align: center;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .footer-flowers img {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: cover;
+            object-position: bottom;
+        }
+
+        /* Adattamento per smartphone e tablet */
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .cta-container {
+                margin: 22px 0 55px;
+            }
+
+            .cta-button {
+                padding: 10px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra superiore con Tasto Menu e Tasto Lingua -->
+    <header>
+        <div class="menu-wrapper">
+            <button id="menuBtn" class="top-btn" onclick="toggleMenu(event)" aria-expanded="false">
+                ☰ <span data-i18n="menuLabel">Menu</span> ▾
+            </button>
+            <nav id="dropdownMenu" class="dropdown-menu">
+                <a href="#invitation" onclick="closeMenu()" data-i18n="navInvitation">Invitation</a>
+                <a href="#infos-utiles" onclick="closeMenu()" data-i18n="navInfos">Infos utiles</a>
+            </nav>
+        </div>
+
+        <button id="langToggle" class="top-btn" onclick="toggleLanguage()" aria-label="Cambia lingua / Changer de langue">
+            🌐 <span id="langLabel">FR ➔ IT</span>
+        </button>
+    </header>
+
+    <main>
+        <!-- Sezione Invito -->
+        <section id="invitation" class="hero">
+            <!-- Immagine con i nomi e il quadrifoglio -->
+            <div class="title-image-wrapper">
+                <img src="headerFR.png" alt="">
+            </div>
+
+            <div class="date-location">
+                <div class="date-line">
+                    <span data-i18n="date">22 mai 2027</span>
+                </div>
+                <div class="time-place" data-i18n="timePlace">
+                    16h30 | S'Aspidda | Sardaigne
+                </div>
+            </div>
+
+            <!-- Pulsante Verde -->
+            <div class="cta-container">
+                <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAANNuWJ9UQUZGSDJJR09WSlZHWFYxUzFXQ085NElCUy4u" class="cta-button" target="_blank" data-i18n="rsvpBtn">
+                    Repondre au questionnaire de participation
+                </a>
+            </div>
+        </section>
+
+        <!-- 3 Colonne Informazioni -->
+        <section id="infos-utiles" class="info-grid">
+            <!-- Colonna 1: Informazioni Utili -->
+            <div class="info-col">
+                <h2 data-i18n="col1Title">INFORMATIONS UTILES</h2>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/dHb4LjAbzako6mLr8" target="_blank" data-i18n="col1Item1">Adresse lieu du mariage</a></li>
+                    <li><a href="https://link.deezer.com/s/34Yap9Lfc6XbNVjdXdGJU" target="_blank" data-i18n="col1Item2">Playlist de musiques à découvrir</a></li>
+                    <li><a href="https://maps.app.goo.gl/w9dhZcQRKt7Akjjh9" target="_blank" data-i18n="col1Item3">Cartographie de lieux chouettes a visiter</a></li>
+                </ul>
+            </div>
+
+            <!-- Colonna 2: Trasporti -->
+            <div class="info-col">
+                <h2 data-i18n="col2Title">TRANSPORT</h2>
+                <ul>
+                    <li><a href="https://togetzer.com/covoiturage-evenement/884gmt" target="_blank" data-i18n="col2Item2">Covoiturage pour venir au mariage</a></li>
+                    <li data-i18n="col2Item1">Recommandation itinéraire slow travel :</li>
+                <ul>
+                    <li data-i18n="col2Item1a">Train direct SNCF Rennes - Marseille</li>
+                    <li data-i18n="col2Item1c">TER ZOU Marseille Toulon</li>
+                    <li data-i18n="col2Item1f">Nuit sur le bateau de Toulon à Porto Torres</li>
+                </ul>
+                    <li data-i18n="col2Item3">Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai</li>
+                </ul>
+            </div>
+
+            <!-- Colonna 3: Alloggio -->
+            <div class="info-col">
+                <h2 data-i18n="col3Title">LOGEMENT</h2>
+                <ul>
+                    <li data-i18n="col3Item1">Possibilité de camper gratuitement sur place</li>
+                    <li data-i18n="col3Item2">Plusieurs Hotels et Agriturismo sont situés à proximité du lieu du mariage</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sezione Foto e Contatti -->
+        <section class="bottom-info">
+            <h2 data-i18n="photosTitle">PHOTOS</h2>
+            <ul>
+                <li data-i18n="photosItem">Lien à venir</li>
+            </ul>
+
+
+
+            <p data-i18n="moreInfo">D’autres informations seront ajoutées sur le site à l’approche des festivités</p>
+            <p><span data-i18n="contactLabel">Contact :</span> <a href="mailto:casaturmel@proton.me">casaturmel@proton.me</a></p>
+        </section>
+    </main>
+
+    <!-- Immagine floreale in basso -->
+    <footer class="footer-flowers">
+        <img src="fiori.png" alt="Fiori decorativi / Fleurs décoratives">
+    </footer>
+
+    <script>
+        const translations = {
+            fr: {
+                menuLabel: "Menu",
+                navInvitation: "Invitation",
+                navInfos: "Infos utiles",
+                date: "22 mai 2027",
+                timePlace: "16h30 | S'Aspidda | Sardaigne",
+                rsvpBtn: "Repondre au questionnaire de participation",
+                col1Title: "INFORMATIONS UTILES",
+                col1Item1: "Adresse lieu du mariage",
+                col1Item2: "Playlist de musiques à découvrir",
+                col1Item3: "Cartographie de lieux chouettes a visiter",
+                col2Title: "TRANSPORT",
+                col2Item1: "Recommandation itinéraire slow travel :",
+		col2Item1a: "Train direct SNCF Rennes - Marseille",
+		col2Item1c: "TER ZOU Marseille Toulon",
+		col2Item1f: "Nuit sur le bateau de Toulon à Porto Torres",
+                col2Item2: "Covoiturage pour venir au mariage",
+                col2Item3: "Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai",
+                col3Title: "LOGEMENT",
+                col3Item1: "Possibilité de camper gratuitement sur place",
+                col3Item2: "Plusieurs Hotels et Agriturismo sont situés à proximité du lieu du mariage",
+                photosTitle: "PHOTOS",
+                photosItem: "Lien à venir",
+                moreInfo: "D’autres informations seront ajoutées sur le site à l’approche des festivités",
+                contactLabel: "Contact :",
+                btnText: "FR ➔ IT"
+            },
+            it: {
+                menuLabel: "Menu",
+                navInvitation: "Partecipazione",
+                navInfos: "Info utili",
+                date: "22 maggio 2027",
+                timePlace: "16:30 | S'Aspidda | Sardegna",
+                rsvpBtn: "Rispondi al questionario di partecipazione",
+                col1Title: "INFORMAZIONI UTILI",
+                col1Item1: "Indirizzo del luogo del matrimonio",
+                col1Item2: "Playlist di musica da scoprire",
+                col1Item3: "Mappa dei posti carini da visitare",
+                col2Title: "TRASPORTI",
+                col2Item1: "Venire in nave (diretto Tolone-Porto Torres con Corsica Ferries)",
+                col2Item2: "Car pooling per venire al matrimonio",
+                col3Title: "ALLOGGIO",
+                col3Item1: "Possibilità di campeggiare gratuitamente sul posto",
+                col3Item2: "Hotel XXXX",
+                col3Item3: "Agriturismo XXX",
+                photosTitle: "FOTO",
+                photosItem: "Foto del matrimonio",
+                moreInfo: "Altre informazioni in arrivo",
+                contactLabel: "Contatto:",
+                btnText: "IT ➔ FR"
+            }
+        };
+
+        let currentLang = 'fr';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.getElementById('langLabel').textContent = translations[lang].btnText;
+        }
+
+        function toggleLanguage() {
+            const nextLang = currentLang === 'fr' ? 'it' : 'fr';
+            setLanguage(nextLang);
+        }
+
+        // Gestione apertura/chiusura tasto Menu
+        function toggleMenu(event) {
+            event.stopPropagation();
+            const menu = document.getElementById('dropdownMenu');
+            const btn = document.getElementById('menuBtn');
+            const isOpen = menu.classList.toggle('show');
+            btn.setAttribute('aria-expanded', isOpen);
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            const btn = document.getElementById('menuBtn');
+            menu.classList.remove('show');
+            btn.setAttribute('aria-expanded', 'false');
+        }
+
+        // Chiude il menu se si clicca in qualsiasi altro punto della pagina
+        document.addEventListener('click', () => {
+            closeMenu();
+        });
+
+        // Rileva la lingua del browser/cellulare al caricamento
+        document.addEventListener('DOMContentLoaded', () => {
+            const browserLang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+            if (browserLang.startsWith('it')) {
+                setLanguage('it');
+            } else {
+                setLanguage('fr');
+            }
+        });
+    </script>
+</body>
+</html>
