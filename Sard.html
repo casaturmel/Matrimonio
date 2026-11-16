@@ -7,7 +7,7 @@
     <style>
         :root {
             --primary-green: #384e35;
-            --light-green-btn: #a3d39c; 
+            --light-green-btn: #a3d39c;
             --light-green-hover: #8ec586;
             --text-dark: #2c2c2c;
             --bg-color: #ffffff;
@@ -310,13 +310,13 @@
             🌐 <span id="langLabel">FR ➔ IT</span>
         </button>
     </header>
- 
+
     <main>
         <!-- Sezione Invito -->
         <section id="invitation" class="hero">
             <!-- Immagine con i nomi e il quadrifoglio -->
             <div class="title-image-wrapper">
-                <img src="headerFR.png" alt="">
+                 <img id="headerImage" src="headerFR.png" alt="">
             </div>
 
             <div class="date-location">
@@ -449,19 +449,32 @@
 
         let currentLang = 'fr';
 
-        function setLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.lang = lang;
 
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
-            });
+function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
 
-            document.getElementById('langLabel').textContent = translations[lang].btnText;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
         }
+    });
+
+    document.getElementById('langLabel').textContent =
+        translations[lang].btnText;
+
+    // Cambia immagine header
+    const headerImg = document.getElementById('headerImage');
+
+    if (lang === 'it') {
+        headerImg.src = 'headerIT.png';
+    } else {
+        headerImg.src = 'headerFR.png';
+    }
+}
+
 
         function toggleLanguage() {
             const nextLang = currentLang === 'fr' ? 'it' : 'fr';
@@ -485,19 +498,19 @@
         }
 
         // Chiude il menu se si clicca in qualsiasi altro punto della pagina
-        document.addEventListener('click', () => {
-            closeMenu();
-        });
 
-        // Rileva la lingua del browser/cellulare al caricamento
-        document.addEventListener('DOMContentLoaded', () => {
-            const browserLang = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
-            if (browserLang.startsWith('it')) {
-                setLanguage('it');
-            } else {
-                setLanguage('fr');
-            }
-        });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const browserLang =
+        (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+
+    if (browserLang.startsWith('it')) {
+        setLanguage('it');
+    } else {
+        setLanguage('fr');
+    }
+});
+
     </script>
 </body>
 </html>
