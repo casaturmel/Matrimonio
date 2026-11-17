@@ -189,13 +189,13 @@
         }
 
         /* Griglia a 3 colonne per le informazioni */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            margin-bottom: 35px;
-            scroll-margin-top: 25px;
-        }
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 35px;
+    scroll-margin-top: 25px;
+}
 
         .info-col h2 {
             font-size: 1rem;
@@ -343,7 +343,7 @@
                 <h2 data-i18n="col1Title">INFORMATIONS UTILES</h2>
                 <ul>
                     <li><a href="https://maps.app.goo.gl/dHb4LjAbzako6mLr8" target="_blank" data-i18n="col1Item1">Adresse lieu du mariage</a></li>
-                    <li><a href="https://link.deezer.com/s/34Yap9Lfc6XbNVjdXdGJU" target="_blank" data-i18n="col1Item2">Playlist de musiques à découvrir</a></li>
+
                     <li><a href="https://maps.app.goo.gl/w9dhZcQRKt7Akjjh9" target="_blank" data-i18n="col1Item3">Cartographie de lieux chouettes a visiter</a></li>
                 </ul>
             </div>
@@ -352,14 +352,15 @@
             <div class="info-col">
                 <h2 data-i18n="col2Title">TRANSPORT</h2>
                 <ul>
-                    <li><a href="https://togetzer.com/covoiturage-evenement/884gmt" target="_blank" data-i18n="col2Item2">Covoiturage pour venir au mariage</a></li>
-                    <li data-i18n="col2Item1">Recommandation itinéraire slow travel :</li>
+                    <li data-i18n="col2Item3">Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai</li>
+
+                    <li data-i18n="col2Item1">Recommandation slow travel :</li>
                 <ul>
-                    <li data-i18n="col2Item1a">Train direct SNCF Rennes - Marseille</li>
+                    <li data-i18n="col2Item1a">Train Rennes - Marseille</li>
                     <li data-i18n="col2Item1c">TER ZOU Marseille Toulon</li>
                     <li data-i18n="col2Item1f">Nuit sur le bateau de Toulon à Porto Torres</li>
                 </ul>
-                    <li data-i18n="col2Item3">Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai</li>
+<li><a href="https://togetzer.com/covoiturage-evenement/884gmt" target="_blank" data-i18n="col2Item2">Covoiturage pour venir au mariage</a></li>                    
                 </ul>
             </div>
 
@@ -371,14 +372,43 @@
                     <li data-i18n="col3Item2">Plusieurs Hotels et Agriturismo sont situés à proximité du lieu du mariage</li>
                 </ul>
             </div>
-        </section>
 
-        <!-- Sezione Foto e Contatti -->
+<!-- Colonna 4: Musica -->
+<div class="info-col">
+
+    <h2 data-i18n="musicTitle">MUSIQUE</h2>
+    <ul>
+        <li> <a href="https://link.deezer.com/s/34Yap9Lfc6XbNVjdXdGJU" target="_blank" data-i18n="musicItem1">Playlist de musiques à découvrir (Extrait)</a></li>
+     
+        <li> <a href="https://link.deezer.com/s/34ZmFwFuDnNTOy6K6Qkic" target="_blank" 
+data-i18n="musicItem2">Playlist de musiques à découvrir (Version complète)</a></li>
+    </ul>
+</div>
+
+<!-- Colonna 5: Lingua -->
+<div class="info-col">
+    <h2 data-i18n="languageTitle">LANGUE</h2>
+    <ul>
+        <li data-i18n="languageItem1">A venir</li>
+<!--        <li data-i18n="languageItem2">b</li>   -->
+    </ul>
+</div>
+
+<!-- Colonna 6: Foto -->
+<div class="info-col">
+    <h2 data-i18n="photosTitle">PHOTOS</h2>
+    <ul>
+        <li data-i18n="photosItem">A venir</li>
+    </ul>
+</div>
+
+        </section>
+<br><br>
+                    <span></span>
+                <div class="date-line">
+<br><br>
+        <!-- Sezione bottom -->
         <section class="bottom-info">
-            <h2 data-i18n="photosTitle">PHOTOS</h2>
-            <ul>
-                <li data-i18n="photosItem">Lien à venir</li>
-            </ul>
 
 
 
@@ -401,50 +431,81 @@
                 date: "22 mai 2027",
                 timePlace: "16h30 | S'Aspidda | Sardaigne",
                 rsvpBtn: "Repondre au questionnaire de participation",
-                col1Title: "INFORMATIONS UTILES",
+                col1Title: "INFORMATIONS GENERALES",
                 col1Item1: "Adresse lieu du mariage",
-                col1Item2: "Playlist de musiques à découvrir",
+                col1Item2: "",
                 col1Item3: "Cartographie de lieux chouettes a visiter",
                 col2Title: "TRANSPORT",
-                col2Item1: "Recommandation itinéraire slow travel :",
-		col2Item1a: "Train direct SNCF Rennes - Marseille",
-		col2Item1c: "TER ZOU Marseille Toulon",
+                col2Item1: "Recommandation slow travel :",
+		col2Item1a: "Train Rennes-Marseille",
+		col2Item1c: "TER Marseille-Toulon (ZOU)",
 		col2Item1f: "Nuit sur le bateau de Toulon à Porto Torres",
                 col2Item2: "Covoiturage pour venir au mariage",
                 col2Item3: "Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai",
                 col3Title: "LOGEMENT",
                 col3Item1: "Possibilité de camper gratuitement sur place",
                 col3Item2: "Plusieurs Hotels et Agriturismo sont situés à proximité du lieu du mariage",
+
+
+musicTitle: "MUSIQUE",
+musicItem1: "Playlist de musiques à découvrir (Extrait)",
+musicItem2: "Playlist de musiques à découvrir (Version complète)",
+
+languageTitle: "LANGUE",
+languageItem1: "A venir",
+languageItem2: "b",
+
                 photosTitle: "PHOTOS",
-                photosItem: "Lien à venir",
+                photosItem: "A venir",
                 moreInfo: "D’autres informations seront ajoutées sur le site à l’approche des festivités",
                 contactLabel: "Contact :",
                 btnText: "FR ➔ IT"
             },
-            it: {
-                menuLabel: "Menu",
-                navInvitation: "Partecipazione",
-                navInfos: "Info utili",
-                date: "22 maggio 2027",
-                timePlace: "16:30 | S'Aspidda | Sardegna",
-                rsvpBtn: "Rispondi al questionario di partecipazione",
-                col1Title: "INFORMAZIONI UTILI",
-                col1Item1: "Indirizzo del luogo del matrimonio",
-                col1Item2: "Playlist di musica da scoprire",
-                col1Item3: "Mappa dei posti carini da visitare",
-                col2Title: "TRASPORTI",
-                col2Item1: "Venire in nave (diretto Tolone-Porto Torres con Corsica Ferries)",
-                col2Item2: "Car pooling per venire al matrimonio",
-                col3Title: "ALLOGGIO",
-                col3Item1: "Possibilità di campeggiare gratuitamente sul posto",
-                col3Item2: "Hotel XXXX",
-                col3Item3: "Agriturismo XXX",
-                photosTitle: "FOTO",
-                photosItem: "Foto del matrimonio",
-                moreInfo: "Altre informazioni in arrivo",
-                contactLabel: "Contatto:",
-                btnText: "IT ➔ FR"
-            }
+
+it: {
+    menuLabel: "Menu",
+    navInvitation: "Invito",
+    navInfos: "Informazioni utili",
+
+    date: "22 maggio 2027",
+    timePlace: "16:30 | S'Aspidda | Sardegna",
+
+    rsvpBtn: "Rispondi al questionario di partecipazione",
+
+    col1Title: "INFORMAZIONI GENERALI",
+    col1Item1: "Indirizzo del luogo del matrimonio",
+    col1Item2: "",
+    col1Item3: "Mappa dei luoghi consigliati da visitare",
+
+    col2Title: "TRASPORTI",
+    col2Item1: "Consiglio per un viaggio slow:",
+    col2Item1a: "Treno Rennes-Marsiglia",
+    col2Item1c: "TER Marsiglia-Tolone (ZOU)",
+    col2Item1f: "Notte in traghetto da Tolone a Porto Torres",
+    col2Item2: "Car pooling per raggiungere il matrimonio",
+    col2Item3: "È possibile fare la traversata in nave (Corsica Ferries) da Tolone a Porto Torres insieme agli sposi venerdì 14 maggio",
+
+    col3Title: "ALLOGGIO",
+    col3Item1: "Possibilità di campeggiare gratuitamente sul posto",
+    col3Item2: "Diversi hotel e agriturismi si trovano nelle vicinanze del luogo del matrimonio",
+
+    musicTitle: "MUSICA",
+    musicItem1: "Playlist musicale da scoprire (Estratto)",
+    musicItem2: "Playlist musicale da scoprire (Versione completa)",
+
+    languageTitle: "LINGUA",
+    languageItem1: "In arrivo",
+    languageItem2: "",
+
+    photosTitle: "FOTO",
+    photosItem: "In arrivo",
+
+    moreInfo: "Ulteriori informazioni saranno aggiunte al sito con l'avvicinarsi dei festeggiamenti",
+
+    contactLabel: "Contatto:",
+
+    btnText: "IT ➔ FR"
+}
         };
 
         let currentLang = 'fr';
