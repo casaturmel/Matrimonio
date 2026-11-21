@@ -162,6 +162,40 @@
             margin-top: 4px;
         }
 
+
+        .maps {
+            font-size: clamp(0.50rem, 2.0vw, 0.90rem);
+            margin-top: 5px;
+	    font-style: italic;
+        }
+
+.maps-link {
+    display: flex;
+    justify-content: center;  /* centra orizzontalmente */
+    align-items: center;      /* allinea verticalmente */
+    gap: 8px;
+    text-align: center;
+}
+
+.maps-icon {
+    font-style: normal;       /* non italic */
+            margin-top: 6px;
+}
+
+.maps-text,
+.maps-text:visited {
+    color: inherit;
+    text-decoration: none;
+    font-style: italic;
+            margin-top: 5px;
+}
+	
+.maps-link:hover .maps-text,
+.maps-link:hover .maps-icon {
+    color: #4285F4;
+}
+
+
         /* Pulsante Verde Principale (più piccolo + più spazio sotto) */
         .cta-container {
             text-align: center;
@@ -223,6 +257,13 @@
         .info-col a:hover {
             color: var(--primary-green);
         }
+
+.info-col em {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #666;
+}
 
         /* Sezione Photos & Contatti */
         .bottom-info {
@@ -301,8 +342,21 @@
                 ☰ <span data-i18n="menuLabel">Menu</span> ▾
             </button>
             <nav id="dropdownMenu" class="dropdown-menu">
-                <a href="#invitation" onclick="closeMenu()" data-i18n="navInvitation">Invitation</a>
-                <a href="#infos-utiles" onclick="closeMenu()" data-i18n="navInfos">Infos utiles</a>
+
+<a id="menuInvitation"
+   data-link-key="navLinkInv"
+   data-i18n="navInvitation">
+   Invitation
+</a>
+ 
+<a id="menuInfo"
+   data-link-key="navLinkInfo"
+   data-i18n="navInfos">
+   Notre mariage en dessin
+</a>
+
+
+
             </nav>
         </div>
 
@@ -325,8 +379,18 @@
                 </div>
                 <div class="time-place" data-i18n="timePlace">
                     16h30 | S'Aspidda | Sardaigne
-                </div>
-            </div>
+                </div> 
+<div class="maps-link">
+    <span class="maps-icon">🌍</span>
+
+    <a class="maps-text"
+       href="https://maps.app.goo.gl/dHb4LjAbzako6mLr8"
+       target="_blank"
+       rel="noopener noreferrer"
+       data-i18n="maps">
+       Ouvrir l'adresse sur Maps
+    </a>
+</div>
 
             <!-- Pulsante Verde -->
             <div class="cta-container">
@@ -338,21 +402,24 @@
 
         <!-- 3 Colonne Informazioni -->
         <section id="infos-utiles" class="info-grid">
-            <!-- Colonna 1: Informazioni Utili -->
-            <div class="info-col">
-                <h2 data-i18n="col1Title">INFORMATIONS UTILES</h2>
-                <ul>
-                    <li><a href="https://maps.app.goo.gl/dHb4LjAbzako6mLr8" target="_blank" data-i18n="col1Item1">Adresse lieu du mariage</a></li>
 
-                    <li><a href="https://maps.app.goo.gl/sYbSEs9x91xBCgEG8" target="_blank" data-i18n="col1Item3">Cartographie de lieux chouettes a visiter</a></li>
+
+
+            <!-- Colonna 1: Alloggio -->
+            <div class="info-col">
+                <h2 data-i18n="col3Title">LOGEMENT</h2>
+                <ul>
+                    <li data-i18n="col3Item1">Possibilité de camper gratuitement sur place</li>
+                    <li data-i18n="col3Item2">Plusieurs Hotels et Agriturismo sont situés à proximité du lieu du mariage</li>
                 </ul>
             </div>
+
 
             <!-- Colonna 2: Trasporti -->
             <div class="info-col">
                 <h2 data-i18n="col2Title">TRANSPORT</h2>
                 <ul>
-                    <li data-i18n="col2Item3">Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai</li>
+                    <li data-i18n="col2Item3">Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai et/ou le retour le 31 mai</li>
 
                     <li data-i18n="col2Item1">Recommandation slow travel :</li>
                 <ul>
@@ -364,39 +431,55 @@
                 </ul>
             </div>
 
-            <!-- Colonna 3: Alloggio -->
+
+            <!-- Colonna 3: Informazioni Utili -->
             <div class="info-col">
-                <h2 data-i18n="col3Title">LOGEMENT</h2>
+                <h2 data-i18n="col1Title">LA SARDAIGNE ET LA BRETAGNE</h2>
                 <ul>
-                    <li data-i18n="col3Item1">Possibilité de camper gratuitement sur place</li>
-                    <li data-i18n="col3Item2">Plusieurs Hotels et Agriturismo sont situés à proximité du lieu du mariage</li>
+ <!--                    <li><a href="https://maps.app.goo.gl/dHb4LjAbzako6mLr8" target="_blank" data-i18n="col1Item1">Adresse lieu du mariage</a></li>
+-->
+
+                    <li><a href="https://maps.app.goo.gl/sYbSEs9x91xBCgEG8" target="_blank" data-i18n="col1Item3">Cartographie de lieux chouettes a visiter en Sardaigne (Italie)</a></li>
+
+                    <li><a href="https://maps.app.goo.gl/1jExPKRZ9H6r5TJu7" target="_blank" data-i18n="col1Item2">Cartographie de lieux chouettes a visiter en Bretagne (France)</a></li>
+
                 </ul>
             </div>
 
 <!-- Colonna 4: Musica -->
 <div class="info-col">
 
-    <h2 data-i18n="musicTitle">MUSIQUE</h2>
+    <h2 data-i18n="col4Title">MUSIQUE</h2>
     <ul>
-        <li> <a href="https://link.deezer.com/s/34Yap9Lfc6XbNVjdXdGJU" target="_blank" data-i18n="musicItem1">Playlist de musiques à découvrir (Extrait)</a></li>
+        <li> <a href="https://link.deezer.com/s/34Yap9Lfc6XbNVjdXdGJU" target="_blank" data-i18n="musicItem1">Playlist de musiques à découvrir (Extrait)</a>
+<!--            <br>
+            <em data-i18n="musicText1">
+                Quelques chansons qui seront jouées pendant la fête.
+            </em> -->
+</li>
      
         <li> <a href="https://link.deezer.com/s/34ZmFwFuDnNTOy6K6Qkic" target="_blank" 
-data-i18n="musicItem2">Playlist de musiques à découvrir (Version complète)</a></li>
+data-i18n="musicItem2">Playlist de musiques à découvrir (Version complète)</a>
+            <br>
+            <em data-i18n="musicText2">
+                Quelques chansons qui seront jouées pendant la fête.
+            </em>
+</li>
     </ul>
 </div>
 
 <!-- Colonna 5: Lingua -->
 <div class="info-col">
-    <h2 data-i18n="languageTitle">LANGUE</h2>
+    <h2 data-i18n="col5Title">AUTRES INFOS</h2>
     <ul>
-        <li data-i18n="languageItem1">A venir</li>
+        <li data-i18n="languageItem1">Côté tenue, n'hésitez pas à fouiller dans votre garde robe ou trouvez votre bonheur en friperie :)</li>
 <!--        <li data-i18n="languageItem2">b</li>   -->
     </ul>
 </div>
 
 <!-- Colonna 6: Foto -->
 <div class="info-col">
-    <h2 data-i18n="photosTitle">PHOTOS</h2>
+    <h2 data-i18n="col6Title">LANGUE ET PHOTOS</h2>
     <ul>
         <li data-i18n="photosItem">A venir</li>
     </ul>
@@ -427,35 +510,40 @@ data-i18n="musicItem2">Playlist de musiques à découvrir (Version complète)</a
             fr: {
                 menuLabel: "Menu",
                 navInvitation: "Invitation",
-                navInfos: "Infos utiles",
+		navLinkInv: "https://casaturmel.github.io/Matrimonio/Sard.html",
+                navInfos: "Notre mariage en dessin",
+		navLinkInfo: "https://drive.proton.me/urls/0SF4Q3Q6PM#AnSvpbGmbMUK",
                 date: "22 mai 2027",
                 timePlace: "16h30 | S'Aspidda | Sardaigne",
+                maps: "Ouvrir l'adresse sur Maps",
                 rsvpBtn: "Repondre au questionnaire de participation",
-                col1Title: "INFORMATIONS GENERALES",
+                col1Title: "LA SARDAIGNE ET LA BRETAGNE",
                 col1Item1: "Adresse lieu du mariage",
-                col1Item2: "",
-                col1Item3: "Cartographie de lieux chouettes a visiter",
+                col1Item2: "Cartographie de lieux chouettes a visiter en Bretagne (France)",
+                col1Item3: "Cartographie de lieux chouettes a visiter en Sardaigne (Italie)",
                 col2Title: "TRANSPORT",
                 col2Item1: "Recommandation slow travel :",
 		col2Item1a: "Train Rennes-Marseille",
 		col2Item1c: "TER Marseille-Toulon (ZOU)",
 		col2Item1f: "Nuit sur le bateau de Toulon à Porto Torres",
                 col2Item2: "Covoiturage pour venir au mariage",
-                col2Item3: "Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai",
+                col2Item3: "Vous pouvez faire la traversée en bateau (Corsica Ferries) de Toulon à Porto Torres avec les futurs mariés le vendredi 14 mai et/ou le retour le 31 mai",
                 col3Title: "LOGEMENT",
                 col3Item1: "Possibilité de camper gratuitement sur place",
                 col3Item2: "Plusieurs Hotels et Agriturismo sont situés à proximité du lieu du mariage",
 
 
-musicTitle: "MUSIQUE",
+col4Title: "MUSIQUE",
 musicItem1: "Playlist de musiques à découvrir (Extrait)",
 musicItem2: "Playlist de musiques à découvrir (Version complète)",
+musicText1: "",
+musicText2: "Ces playlists ont été créées sur Deezer mais peuvent être importées sur les autres plateformes (ex : Spotify).",
 
-languageTitle: "LANGUE",
-languageItem1: "A venir",
+col5Title: "AUTRES INFOS",
+languageItem1: "Côté tenue, n'hésitez pas à fouiller dans votre garde robe ou trouvez votre bonheur en friperie :)",
 languageItem2: "b",
 
-                photosTitle: "PHOTOS",
+                col6Title: "LANGUE ET PHOTOS",
                 photosItem: "A venir",
                 moreInfo: "D’autres informations seront ajoutées sur le site à l’approche des festivités",
                 contactLabel: "Contact :",
@@ -465,17 +553,18 @@ languageItem2: "b",
 it: {
     menuLabel: "Menu",
     navInvitation: "Invito",
-    navInfos: "Informazioni utili",
-
+    navLinkInv: "https://drive.proton.me/urls/J6DWXM9B4M#XkmaTKQvdhBz",
+    navInfos: "Il matrimonio in versione disegno",
+    navLinkInfo: "https://drive.proton.me/urls/9BRPQF2JC0#K5jCvw4fNhKr",
     date: "22 maggio 2027",
     timePlace: "16:30 | S'Aspidda | Sardegna",
-
+    maps: "Apri l'indirizzo su Maps",
     rsvpBtn: "Rispondi al questionario di partecipazione",
 
-    col1Title: "INFORMAZIONI GENERALI",
+    col1Title: "LA BRETAGNA E LA SARDEGNA",
     col1Item1: "Indirizzo del luogo del matrimonio",
-    col1Item2: "",
-    col1Item3: "Mappa dei luoghi consigliati da visitare",
+    col1Item2: "Mappa dei luoghi consigliati da visitare in Bretagna (Francia)",
+    col1Item3: "Mappa dei luoghi consigliati da visitare in Sardegna (Italia)",
 
     col2Title: "TRASPORTI",
     col2Item1: "Consiglio per un viaggio in mobilità dolce:",
@@ -483,21 +572,24 @@ it: {
     col2Item1c: "TER Marsiglia-Tolone (ZOU)",
     col2Item1f: "Notte in traghetto da Tolone a Porto Torres",
     col2Item2: "Car pooling per raggiungere il matrimonio",
-    col2Item3: "È possibile fare la traversata in nave (Corsica Ferries) da Tolone a Porto Torres insieme agli sposi venerdì 14 maggio",
+    col2Item3: "È possibile fare la traversata in nave (Corsica Ferries) da Tolone a Porto Torres insieme agli sposi venerdì 14 maggio e/o il ritorno il 31 maggio",
 
     col3Title: "ALLOGGIO",
     col3Item1: "Possibilità di campeggiare gratuitamente sul posto",
     col3Item2: "Diversi hotel e agriturismi si trovano nelle vicinanze del luogo del matrimonio",
 
-    musicTitle: "MUSICA",
+    col4Title: "MUSICA",
     musicItem1: "Playlist musicale da scoprire (Estratto)",
     musicItem2: "Playlist musicale da scoprire (Versione completa)",
+musicText1: "",
+musicText2: "Queste playlist sono state create su Deezer ma possono essere importate sulle altre piattaforme (ad es: Spotify).",
 
-    languageTitle: "LINGUA",
-    languageItem1: "In arrivo",
+
+    col5Title: "ALTRE INFO",
+    languageItem1: "Per quanto riguarda l'abbigliamento, non esitate a rovistare nel vostro guardaroba o a cercare qualcosa che vi piace di seconda mano :)",
     languageItem2: "",
 
-    photosTitle: "FOTO",
+    col6Title: "LINGUA E FOTO",
     photosItem: "In arrivo",
 
     moreInfo: "Ulteriori informazioni saranno aggiunte al sito con l'avvicinarsi dei festeggiamenti",
@@ -522,6 +614,11 @@ function setLanguage(lang) {
             el.textContent = translations[lang][key];
         }
     });
+
+document.querySelectorAll('[data-link-key]').forEach(el => {
+    const key = el.dataset.linkKey;
+    el.href = translations[lang][key];
+});
 
     document.getElementById('langLabel').textContent =
         translations[lang].btnText;
